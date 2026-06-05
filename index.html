@@ -569,8 +569,8 @@
 
 <script>
   /* ================= CONFIG ================= */
-  // >>> COLE AQUI o link de download da versão AVANÇADA (zip com OVERISE_AVANCADA.exe + OVERISE_DATA.zip)
-  const DOWNLOAD_AVANCADA_URL = "https://www.mediafire.com/file/juo1clar374gfu3/OVERISE_AVANCADO.zip/file";
+  // Link de download da versão AVANÇADA (GitHub Releases — link permanente, é só subir nova versão)
+  const DOWNLOAD_AVANCADA_URL = "https://github.com/overisedev/apps/releases/latest/download/OVERISE_AVANCADA.zip";
 
   const TOTAL_STEPS = 4;
   const STORAGE_KEY = "overise_adv_steps_v1";
@@ -611,11 +611,13 @@
 
   function downloadLauncher(){
     if (!DOWNLOAD_AVANCADA_URL || DOWNLOAD_AVANCADA_URL.startsWith("COLE_AQUI")) {
-      toast("⚠ Configure o https://www.mediafire.com/file/juo1clar374gfu3/OVERISE_AVANCADO.zip/file de download no código (DOWNLOAD_AVANCADA_URL).");
+      toast("⚠ Configure o link de download no código (DOWNLOAD_AVANCADA_URL).");
       return;
     }
     markDone(4);
-    window.open(DOWNLOAD_AVANCADA_URL, '_blank');
+    const a = document.createElement('a');
+    a.href = DOWNLOAD_AVANCADA_URL; a.rel = 'noopener';
+    document.body.appendChild(a); a.click(); a.remove();
   }
 
   /* ================= TOAST ================= */
